@@ -7,7 +7,7 @@ function getRandomIndex(arr:string[]):number{
 
 }
 
-export function getRandomWord():string {
+export function getWord():string {
     const index:number = getRandomIndex(words)
     return words[index]
 }
