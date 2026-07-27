@@ -3,18 +3,22 @@ import {getFarewellText} from "../utils";
 import {languages} from "../languages";
 import type{JSX} from "react"
 
+type GameStatusProps={
+    isGameWon:boolean,
+    isGameLost:boolean,
+    isGameOver:boolean, 
+    isLastGuessIncorrect:boolean,
+    wrongGuessCount:number}
+
+
 export default function GameStatus({
                                        isGameWon,
                                        isGameLost,
                                        isGameOver,
                                        isLastGuessIncorrect,
                                        wrongGuessCount
-                                   }:{isGameWon:boolean,
-                                     isGameLost:boolean,
-                                     isGameOver:boolean, 
-                                     isLastGuessIncorrect:boolean,
-                                     wrongGuessCount:number}): JSX.Element {
-    const gameStatusClass = clsx("game-status", {
+                                   }: GameStatusProps): JSX.Element {
+    const gameStatusClass:string = clsx("game-status", {
         won: isGameWon,
         lost: isGameLost,
         farewell: !isGameOver && isLastGuessIncorrect
