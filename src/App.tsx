@@ -1,6 +1,6 @@
 import {useState} from "react"
 import {languages} from "./languages"
-import {getRandomWord} from "./utils"
+import {getWord} from "./utils"
 
 import ConfettiContainer from "./components/ConfettiContainer"
 import Header from './components/Header'
@@ -13,7 +13,7 @@ import NewGameButton from "./components/NewGameButton";
 
 export default function AssemblyEndgame() {
     // State values
-    const [currentWord, setCurrentWord] = useState<string>(():string => getRandomWord())
+    const [currentWord, setCurrentWord] = useState<string>(():string => getWord())
     const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
 
@@ -26,8 +26,8 @@ export default function AssemblyEndgame() {
     const isGameLost:boolean = wrongGuessCount >= numGuessesLeft
     const isGameOver:boolean = isGameWon || isGameLost
     const lastGuessedLetter:string = guessedLetters[guessedLetters.length - 1]
-    const isLastGuessIncorrect:boolean = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
-
+    //const isLastGuessIncorrect:boolean = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
+      const isLastGuessIncorrect:boolean = lastGuessedLetter ? !currentWord.includes(lastGuessedLetter) : false
     // Static values
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
@@ -40,7 +40,7 @@ export default function AssemblyEndgame() {
     }
 
     function startNewGame():void {
-        setCurrentWord(getRandomWord())
+        setCurrentWord(getWord())
         setGuessedLetters([])
     }
 
