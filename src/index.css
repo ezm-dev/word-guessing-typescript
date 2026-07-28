@@ -4,11 +4,11 @@
 
 body {
     margin: 0;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
     background-color: #262626;
     color: #D9D9D9;
     padding: 20px;
     height: 100vh;
- 
 }
 
 main {
@@ -20,85 +20,76 @@ main {
 header {
     text-align: center;
 }
+
 header > h1 {
-    /* font-size: 1.25rem;
-    font-weight: 500; */
+    font-size: 1.25rem;
+    font-weight: 500;
     color: #F9F4DA;
 }
- header > p {
-    /* font-size: 0.875rem;
-    max-width: 350px; */
+
+header > p {
+    font-size: 0.875rem;
+    max-width: 350px;
     color: #8E8E8E;
 }
-section.game-status{
-    /* background-color: #10A95B; */
+
+section.game-status {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: #F9F4DA;
-    border-radius: 5px;
-    margin-block: 30px;
-    min-height: 60px;
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
+    min-height: 60px;
+    border-radius: 4px;
+    margin-block: 30px;
+}
 
+section.game-status.won {
+    background-color: #10A95B;
+}
+
+section.game-status.lost {
+    background-color: #BA2A2A;
+}
+
+section.game-status.farewell {
+    background-color: #7A5EA7;
+    border: 1px dashed #323232;
+}
+
+section.game-status > p {
+    margin: 5px;
 }
 
 section.game-status > p.farewell-message {
     font-style: italic;
     font-weight: 400;
- 
 }
 
-
-section.game-status.won{
-    background-color: #10A95B;
-}
-section.game-status.lost{
-    background-color: #E74C3C;
-}
-section.game-status.farewell{
-    background-color: #7A5EA7;
-    border: 1px dashed #323232;
-    padding: 10px 15px;
+section.game-status > h2 {
+    font-size: 1.25rem;
+    margin: 5px
 }
 
-section.game-status > p {
-    /* font-size: 1rem;
-    font-weight: 500; */
-    margin: 5px 0;
-}
-section.game-status > h2{
-    /* font-size: 1.5rem;
-    font-weight: 700; */
-    margin: 5px 0;
-}
-
-
-
-
-
-.languages-container{
-    display:flex;
+section.language-chips {
+    display: flex;
     flex-wrap: wrap;
-    gap:8px;
-    max-width: 450px;
+    gap: 5px;
     justify-content: center;
-
-
+    max-width: 350px;
+    margin-bottom: 36px;
 }
 
-
-span.language-box{
- padding: 10px;
- border-radius: 5px;
-font-size: 1.1rem;
-position: relative;
-/* overflow: hidden; */
+span.chip {
+    border-radius: 3px;
+    padding: 4.5px;
+    position: relative;
 }
 
-/* Dimmed overlay with skull on "lost" languages applied to span with both classes */
-span.language-box.lost::before {
+/* Dimmed overlay with skull on "lost" languages */
+span.chip.lost::before {
     content: "💀";
     position: absolute;
     display: flex;
@@ -109,85 +100,72 @@ span.language-box.lost::before {
     font-size: 0.85rem;
     top: 0;
     left: 0;
-  /*   inset: 0; shorthand for top/left/right/bottom: 0 */
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-span.letter-box{
-    
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 2px solid #D9D9D9;
-    margin: 0 5px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    background-color: #323232;
-    
-}
-
-
-.word-container{
-    margin-top: 30px;
-    text-align: center;
+section.word {
     display: flex;
     justify-content: center;
-    gap:2px;
+    gap: 2px;
     margin-bottom: 20px;
-    
 }
 
+section.word > span {
+    height: 40px;
+    width: 40px;
+    background-color: #323232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.125rem;
+    border-bottom: 1px solid #F9F4DA;
+}
 
- .alphabet-container{
-    margin-top: 30px;
+section.word > span.missed-letter {
+    color: #EC5D49;
+}
+
+section.keyboard {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
     max-width: 450px;
+    margin-bottom: 36px;
+}
 
- }
-
- /* .alpha-letter */
- section.alphabet-container > button{
-    width: 40px;
-    height: 40px;
-    background-color: #404040;
-     /* background-color: #FCBA29; */
-    /* border: none; */
-    border-radius: 5px;
-    /* color: #D9D9D9; */
-    color: #FCBA29; 
-    font-size: 1.1rem;
-    font-weight: 600;
+section.keyboard > button {
+    height: 35px;
+    width: 35px;
+    background-color: #FCBA29;
+    border: 1px solid #D7D7D7;
+    border-radius: 3px;
     cursor: pointer;
- }
- /* watch fo specificity*/
- section.alphabet-container >.right{
-    color:#10A95B
-}
- section.alphabet-container >.wrong{
-    color:#E74C3C;
 }
 
- section.alphabet-container >button:disabled{
-    cursor:not-allowed;
-    opacity: 0.5;
- }
+section.keyboard > button.correct {
+    background-color: #10A95B;
+}
+
+section.keyboard > button.wrong {
+    background-color: #EC5D49;
+}
+
+section.keyboard > button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5
+}
+
 button.new-game {
     background-color: #11B5E5;
-    /* border: 1px solid #D7D7D7; */
+    border: 1px solid #D7D7D7;
     border-radius: 4px;
     width: 225px;
     height: 40px;
     padding: 6px 12px;
     display: block;
-    margin: 30px auto;
+    margin-inline: auto;
     cursor: pointer;
-    font-size: 1.2rem;
-
 }
 
 .sr-only {
